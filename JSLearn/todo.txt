@@ -1,0 +1,6 @@
+- add animation of the buttons floating to the brown box when user selects them 
+- add answer empty spaces 
+- add timer
+- calculate points based off of time it takes to answer
+- move to next level 
+

@@ -1,0 +1,40 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.btn{ 
+	margin: 10px; 
+	float: left;
+	
+}
+.buttons{
+	margin-left: 500px;
+}
+
+.footer{
+
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #006E33;
+	color: white;
+	text-align: center;	
+}
+
+.answer-div{
+
+	position: fixed;
+	width: 700px;
+	height: 290px;
+	margin-left: 290px;
+	margin-right: 50px;
+	margin-top: 50;
+	outline: #674736 solid 10px;
+
+}
