@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 const express = require('express');
+const https = require('https')
 var app = require('../app');
 var debug = require('debug')('jslearn:server');
 var http = require('http');
@@ -90,3 +91,24 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+const options = {
+  hostname: 'http://www.anagramica.com/best/:kakoman',
+  port: 443,
+//  path: '/todos',
+  method: 'GET'
+}
+
+const req = https.request(options, res => {
+  console.log(`statusCode: ${res.statusCode}`)
+
+  res.on('data', d => {
+    process.stdout.write(d)
+  })
+})
+
+req.on('error', error => {
+  console.error(error)
+})
+
+req.end()
