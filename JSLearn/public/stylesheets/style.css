@@ -1,8 +1,23 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(160, 93, 26) !important;
 }
 
+.level{
+	display: none;
+}
+
+.levelSelectButton{
+	background-color: #165510;
+	color:white;
+	font-size: large;
+	transition-duration: 0.4s;
+}
+.levelSelectButton:hover{
+	background-color: white;
+	color:black;
+}
 a {
   color: #00B7FF;
 }
@@ -13,7 +28,7 @@ a {
 	
 }
 .buttons{
-	margin-left: 500px;
+	margin-left: 700px;
 }
 
 .footer{
@@ -27,14 +42,15 @@ a {
 	text-align: center;	
 }
 
-.answer-div{
+/* Add a black background color to the top navigation */
+.header {
+	background-color: #F1F1F1;
+	text-align: center;
+	padding: 20px;
+  }
 
-	position: fixed;
-	width: 700px;
-	height: 290px;
-	margin-left: 290px;
-	margin-right: 50px;
-	margin-top: 50;
-	outline: #674736 solid 10px;
 
+.shuffle{
+	position:fixed;
+	margin-left:50px;
 }

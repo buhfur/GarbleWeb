@@ -4,28 +4,56 @@
   <title>Garble!</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
-  <h1>Level 1</h1> 
-  
-<div class="footer">
-	<div class="buttons">
-	<!-- LWLMOE -->	
-		  <button type="button" class="btn btn-primary" id="changeButton" >L</button>
-		  <button type="button" class="btn btn-primary" id="changeButton" >W</button>
-		  <button type="button" class="btn btn-primary" id="changeButton" >L</button>
-		  <button type="button" class="btn btn-primary" id="changeButton" >M</button>
-		  <button type="button" class="btn btn-primary" id="changeButton" >O</button>
-		  <button type="button" class="btn btn-primary" id="changeButton" >E</button>
+	<div class="levelSelect" id="levelSelect">
+
+	
+			<div class="btn-group-vertical">
+
+				<button type="button" class="btn btn-default levelSelectButton" id="level1" >Level 1</button>
+				<button type="button" class="btn btn-default levelSelectButton" id="level2" >Level 2</button>
+				<button type="button" class="btn btn-default levelSelectButton" id="level3" >Level 3</button>
+				<button type="button" class="btn btn-default levelSelectButton" id="level4" >Level 4</button>
+				<button type="button" class="btn btn-default levelSelectButton" id="level5" >Level 5</button>
+				<button type="button" class="btn btn-default" id="randLevel" >Random</button>
+				<button type="button" class="btn btn-default" id="endlessButton" >Endless (experimental)</button>
+
+			</div>
 	</div>
-</div>
+ <div class="level" id="level">
+	 <nav class="navbar fixed-top navbar-dark bg-dark">
+		<button type="button" class="btn btn-danger" id="quit">QUIT</button> 
+	 </nav>
+	<div class="footer">
+		<div id="buttons" class="buttons">
+			<ul id="buttonList">
+				<button type="button" class="btn btn-default" id="letterButton0" >L</button>
+				<button type="button" class="btn btn-default" id="letterButton1" >W</button>
+				<button type="button" class="btn btn-default" id="letterButton2" >L</button>
+				<button type="button" class="btn btn-default" id="letterButton3" >M</button>
+				<button type="button" class="btn btn-default" id="letterButton4" >O</button>
+				<button type="button" class="btn btn-default" id="letterButton5" >E</button>
+			</ul>
+		</div>
+		<div class="shuffle">
+			<button id="shuffleButton" type="button" class="btn btn-large btn-warning">Shuffle</button>
+		</div>
+	</div>
 
-<div class="answer-div">
 
-	<p>Answers here</p>
+
+	<div class="answers">
+		<!-- propagate with text?-->
+		<ul id ="dashList">
+		</ul>
+	</div>
+
+	<script src="javascripts/game.js"></script>
 </div>
-<script src="javascripts/basic.js"></script>
 </body>
 
 </html>
