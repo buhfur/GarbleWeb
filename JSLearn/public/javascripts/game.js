@@ -13,7 +13,7 @@ shuffleButton.onclick = function(){ //on click to shuffle the letters around
 
 	var frag = document.createDocumentFragment(); //holds elements temporarily 
 	while (letterButtons.length) {
-		frag.appendChild(letterButtons[Math.floor(Math.random() * letterButtons.length)]);
+		frag.appendChild(letterButtons[Math.floor(Math.randLevel() * letterButtons.length)]);
 	}
 	buttonList.appendChild(frag);
 }
@@ -21,9 +21,12 @@ shuffleButton.onclick = function(){ //on click to shuffle the letters around
 document.getElementById("level1").onclick = function(){
 	//hide level select window
 	selectMenu.style.display="none";
-	levelScreen.style.display = "initial";	
+	levelScreen.style.display = "initial";
 	document.getElementById("levelHead").innerHTML = "Level 1";
+	//call function to generate the dashes 
+	PrintBoard(level1key);
 
+	
 }
 
 document.getElementById("level2").onclick = function(){
@@ -45,6 +48,9 @@ document.getElementById("level2").onclick = function(){
 			continue;
 		}
 	}
+
+	PrintBoard(level2key);
+	
 }
 
 document.getElementById("level3").onclick = function(){
@@ -66,6 +72,9 @@ document.getElementById("level3").onclick = function(){
 			continue;
 		}
 	}
+
+	PrintBoard(level3key);
+	
 }
 
 document.getElementById("level4").onclick = function(){
@@ -87,6 +96,8 @@ document.getElementById("level4").onclick = function(){
 			continue;
 		}
 	}
+	PrintBoard(level4key);
+	
 }
 
 document.getElementById("level5").onclick = function(){
@@ -102,35 +113,37 @@ document.getElementById("level5").onclick = function(){
 			//change the buttons text 
 		const letters = level5Letters.split(" ");
 		try{
-
 			document.getElementById("letterButton" + x).innerHTML = letters[x];
 		}catch(error){
 			continue;
 		}
 	}
+	
+	PrintBoard(level4key);
 }
 
 document.getElementById("randLevel").onclick = function(){
 
-	//generate random number 
-	const random = Math.floor(Math.random() * (6 - 1) + 1);
-	document.getElementById("levelHead").innerHTML = "Level " + random;
+	//generate randLevel number 
+	const randLevel = Math.floor(Math.random() * (6 - 1) + 1);
+	document.getElementById("levelHead").innerHTML = "Level " + randLevel;
 	selectMenu.style.display="none";
 	levelScreen.style.display = "initial";	
 
+    letterArray = ["",level1Letters,level2Letters,level3Letters,level4Letters,level5Letters];
 	//change the letters on the buttons
-	console.log(random);
 	for(var x = 0; x < 6; x++){
 		//iterate through spli list of level(n)Letters
 		//change the buttons text 
-        letterArray = ["",level1Letters,level2Letters,level3Letters,level4Letters,level5Letters];
-		var letters = letterArray[random].split(" ");
+		var letters = letterArray[randLevel].split(" ");
 		try{
 			document.getElementById("letterButton" + x).innerHTML = letters[x];
 		}catch(error){
 			continue;
 		}
 	}
+	
+	PrintBoard(letterArray[randLevel]);
 }
 
 document.getElementById("quit").onclick = function(){
@@ -144,14 +157,14 @@ const level2key = ["FIG","FIT","SIT","HIS","HIT","IFS","ITS","FIGS","FITS","FISH
 const level3key = ["ELM","LEI","LIE","MIL","ELMS","MISS","MISE","MESS","MILE","ISLE","SEMI","SLIM","LIME","LESS","LEIS","LIES","MILES","ISLES","SLIMS","SMILE","SMILE","SLIME","LIMES","SMILES","SLIMES"]
 const level4key = ["RAN","RAY","ANY","ARC","NAY","NOR","CON","CAN","CAR","CAY","COY","OAR","YON","ORCA","CYAN","CORN","YARN","RACY","ROAN","NARY","CORNY","RAYON","CARN","CRONY","ACORN","CRAYON"]
 const level5key = ["AGE","RED","ARE","RAG","EAR","DAG","GAD","GAG","RAD","EGG","AGED","DARE","DREG","DRAG","GAGE","RAGE","DEAR","READ","EGAD","GEAR","RAGED","GRADE","DAGGER","RAGGED"]
-var level1Letters =  "L W L M O E";
-var level2Letters =  "H S G F T I";
-var level3Letters =  "E M I S S L";
-var level4Letters =  "R A N Y C O";
-var level5Letters =  "G A E D R G";
+var level1Letters = "L W L M O E";
+var level2Letters = "H S G F T I";
+var level3Letters = "E M I S S L";
+var level4Letters = "R A N Y C O";
+var level5Letters = "G A E D R G";
 
 //printBoard(String[] wordlist, String[] foundAnswers, String level)
-function PrintBoard(wordList, foundAnswers,level){
+function PrintBoard(wordList){
 
 	const gameBoard = new Map(); // holds each word with corresponding dashes 
 
@@ -181,11 +194,6 @@ function PrintBoard(wordList, foundAnswers,level){
 	
 }
 
-function GameLoop(wordList){
-// hide all elements of the page until user picks a level
-	var foundAnswers = [];
 
-
-}
 
 
