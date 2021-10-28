@@ -1,4 +1,4 @@
-
+//first javascript game project 
 const selectMenu = document.getElementById("levelSelect");
 const levelScreen = document.getElementById("level");
 var buttonList = document.getElementById("buttonList");
@@ -22,6 +22,7 @@ document.getElementById("level1").onclick = function(){
 	//hide level select window
 	selectMenu.style.display="none";
 	levelScreen.style.display = "initial";	
+	document.getElementById("levelHead").innerHTML = "Level 1";
 
 }
 
@@ -29,7 +30,8 @@ document.getElementById("level2").onclick = function(){
 
 	selectMenu.style.display="none";
 	levelScreen.style.display = "initial";	
-
+	//change level header 
+	document.getElementById("levelHead").innerHTML = "Level 2";
 	//change the letters on the buttons
 	for(var x = 0; x < 6; x++){
 
@@ -38,8 +40,6 @@ document.getElementById("level2").onclick = function(){
 		const letters = level2Letters.split(" ");
 		try{
 
-			console.log("letterButton" + x);//delete
-			console.log(letters[x]); //delete 
 			document.getElementById("letterButton" + x).innerHTML = letters[x];
 		}catch(error){
 			continue;
@@ -52,6 +52,7 @@ document.getElementById("level3").onclick = function(){
 	selectMenu.style.display="none";
 	levelScreen.style.display = "initial";	
 
+	document.getElementById("levelHead").innerHTML = "Level 3";
 	//change the letters on the buttons
 	for(var x = 0; x < 6; x++){
 
@@ -60,8 +61,6 @@ document.getElementById("level3").onclick = function(){
 		const letters = level3Letters.split(" ");
 		try{
 
-			console.log("letterButton" + x);//delete
-			console.log(letters[x]); //delete 
 			document.getElementById("letterButton" + x).innerHTML = letters[x];
 		}catch(error){
 			continue;
@@ -74,6 +73,7 @@ document.getElementById("level4").onclick = function(){
 	selectMenu.style.display="none";
 	levelScreen.style.display = "initial";	
 
+	document.getElementById("levelHead").innerHTML = "Level 4";
 	//change the letters on the buttons
 	for(var x = 0; x < 6; x++){
 
@@ -82,8 +82,6 @@ document.getElementById("level4").onclick = function(){
 		const letters = level4Letters.split(" ");
 		try{
 
-			console.log("letterButton" + x);//delete
-			console.log(letters[x]); //delete 
 			document.getElementById("letterButton" + x).innerHTML = letters[x];
 		}catch(error){
 			continue;
@@ -96,6 +94,7 @@ document.getElementById("level5").onclick = function(){
 	selectMenu.style.display="none";
 	levelScreen.style.display = "initial";	
 
+	document.getElementById("levelHead").innerHTML = "Level 5";
 	//change the letters on the buttons
 	for(var x = 0; x < 6; x++){
 
@@ -104,8 +103,6 @@ document.getElementById("level5").onclick = function(){
 		const letters = level5Letters.split(" ");
 		try{
 
-			console.log("letterButton" + x);//delete
-			console.log(letters[x]); //delete 
 			document.getElementById("letterButton" + x).innerHTML = letters[x];
 		}catch(error){
 			continue;
@@ -115,12 +112,28 @@ document.getElementById("level5").onclick = function(){
 
 document.getElementById("randLevel").onclick = function(){
 
+	//generate random number 
+	const random = Math.floor(Math.random() * (6 - 1) + 1);
+	document.getElementById("levelHead").innerHTML = "Level " + random;
 	selectMenu.style.display="none";
 	levelScreen.style.display = "initial";	
+
+	//change the letters on the buttons
+	console.log(random);
+	for(var x = 0; x < 6; x++){
+		//iterate through spli list of level(n)Letters
+		//change the buttons text 
+        letterArray = ["",level1Letters,level2Letters,level3Letters,level4Letters,level5Letters];
+		var letters = letterArray[random].split(" ");
+		try{
+			document.getElementById("letterButton" + x).innerHTML = letters[x];
+		}catch(error){
+			continue;
+		}
+	}
 }
 
 document.getElementById("quit").onclick = function(){
-
 	selectMenu.style.display="initial";
 	levelScreen.style.display = "none";	
 	//also stop timer
