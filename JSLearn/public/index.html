@@ -24,20 +24,29 @@
 
 			</div>
 	</div>
- <div class="level" id="level">
-	 <nav class="navbar fixed-top navbar-dark bg-dark">
-		<button type="button" class="btn btn-danger" id="quit">QUIT</button> 
-		<h1 id="levelHead"> Level x</h1>
-	 </nav>
+	<div class="level" id="level">
+
+		<div id="answers">
+
+		</div>	
+		<nav class="navbar fixed-top navbar-dark bg-dark">
+			<button type="button" class="btn btn-danger" id="quit" onclick="quit()">QUIT</button> 
+			<h1 id="levelHead"> Level x</h1>
+			<h2 id="counter"></h2>
+		</nav>
 	<div class="footer">
+		<div id="userInput">
+			<input type="text" id="userInputBox" value="" required maxlength="6">
+			<button class="btn btn-dark" type="submit" id="submit">Submit</button>
+		</div>
 		<div id="buttons" class="buttons">
 			<ul id="buttonList">
-				<button type="button" class="btn btn-default" id="letterButton0" >L</button>
-				<button type="button" class="btn btn-default" id="letterButton1" >W</button>
-				<button type="button" class="btn btn-default" id="letterButton2" >L</button>
-				<button type="button" class="btn btn-default" id="letterButton3" >M</button>
-				<button type="button" class="btn btn-default" id="letterButton4" >O</button>
-				<button type="button" class="btn btn-default" id="letterButton5" >E</button>
+				<button type="button" class="btn btn-default letterButton" id="letterButton0"  onclick= "addLetter(this.id)" >L</button>
+				<button type="button" class="btn btn-default letterButton" id="letterButton1"  onclick="addLetter(this.id)" >W</button>
+				<button type="button" class="btn btn-default letterButton" id="letterButton2"  onclick="addLetter(this.id)">L</button>
+				<button type="button" class="btn btn-default letterButton" id="letterButton3"  onclick="addLetter(this.id)">M</button>
+				<button type="button" class="btn btn-default letterButton" id="letterButton4"  onclick="addLetter(this.id)">O</button>
+				<button type="button" class="btn btn-default letterButton" id="letterButton5"  onclick="addLetter(this.id)">E</button>
 			</ul>
 		</div>
 		<div class="shuffle">
@@ -47,13 +56,10 @@
 
 
 
-	<div class="answers">
-		<!-- propagate with text?-->
-		<ul id ="dashList">
-		</ul>
-	</div>
+
 
 	<script src="javascripts/game.js"></script>
+	<script src="javascripts/countdown.js"></script>
 </div>
 </body>
 
