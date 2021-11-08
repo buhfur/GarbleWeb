@@ -11,6 +11,52 @@ var shuffleButton = document.getElementById("shuffleButton");
 var letterButtons = buttonList.children;
 var level = "";
 
+function CheckAnswer(answer){
+	//take the input from the text box 
+	if(gameBoard.has(answer)){
+		console.log("gameboard has the answer!")
+		//clear the gameboard and replace the lists key with its value in the gameBoard map, then call PrintBoard again add score as well
+		foundAnswers.push(answer);
+		PrintBoard(level1key);
+	}
+}
+
+//printBoard(String[] wordlist, String[] foundAnswers, String level)
+function PrintBoard(wordList){
+	//attempt to clear the board 
+
+
+	for(var index of wordList){
+		//loop determines how many dashes will be in an answer
+		var dashes = index.replace(/[a-z]/gi, ' _ ');
+		
+		
+		if(foundAnswers.includes(index)){ //check if user has already guessed that word 
+			console.log("answer has already been found, replacing key with value....")
+			gameBoard.set(dashes,index); //replace the maps key with its value
+		}else{
+			gameBoard.set(index, dashes);
+		}
+	}
+	for(var element of gameBoard.values()){
+		console.log(element);
+		var word = $("<p>", {id: "dashes"}).text(element);
+		$("#answers").append(word);
+	}
+
+}
+
+function clearBoard(){
+	console.log("clear board called");
+
+	$("#dashList").empty();
+}
+function quit(){
+	clearBoard();
+	selectMenu.style.display="initial";
+	levelScreen.style.display = "none";	
+}
+
 
 /** EVENT LISTENERS  */
 shuffleButton.onclick = function(){ //on click to shuffle the letters around 
@@ -33,13 +79,11 @@ document.getElementById("level1").onclick = function(){
 	//call function to generate the dashes 
 	PrintBoard(level1key);
 
-	countdown(2, level1key);
 
 	
 }
 
 document.getElementById("level2").onclick = function(){
-
 	selectMenu.style.display="none";
 	levelScreen.style.display = "initial";	
 	userInputBox.autofocus = true;
@@ -50,7 +94,7 @@ document.getElementById("level2").onclick = function(){
 	for(var x = 0; x < 6; x++){
 
 		//iterate through spli list of level(n)Letters
-			//change the buttons text 
+		//change the buttons text 
 		const letters = level2Letters.split(" ");
 		try{
 
@@ -62,11 +106,9 @@ document.getElementById("level2").onclick = function(){
 
 	PrintBoard(level2key);
 	
-	countdown(1, level2key);
 }
 
 document.getElementById("level3").onclick = function(){
-
 	selectMenu.style.display="none";
 	levelScreen.style.display = "initial";	
 	userInputBox.autofocus = true;
@@ -89,11 +131,9 @@ document.getElementById("level3").onclick = function(){
 
 	PrintBoard(level3key);
 	
-	countdown(1, level3key);
 }
 
 document.getElementById("level4").onclick = function(){
-
 	document.getElementById("userInputBox").value = "";
 	selectMenu.style.display="none";
 	levelScreen.style.display = "initial";	
@@ -103,22 +143,20 @@ document.getElementById("level4").onclick = function(){
 	for(var x = 0; x < 6; x++){
 
 		//iterate through spli list of level(n)Letters
-			//change the buttons text 
+		//change the buttons text 
 		const letters = level4Letters.split(" ");
-		try{
-
+		try{ 
 			document.getElementById("letterButton" + x).innerHTML = letters[x];
 		}catch(error){
+			console.log(error);
 			continue;
 		}
 	}
 	PrintBoard(level4key);
 	
-	countdown(1, level4key);
 }
 
 document.getElementById("level5").onclick = function(){
-
 	document.getElementById("userInputBox").value = "";
 	selectMenu.style.display="none";
 	levelScreen.style.display = "initial";	
@@ -138,11 +176,9 @@ document.getElementById("level5").onclick = function(){
 	}
 	
 	PrintBoard(level5key);
-	countdown(1, level5key);
 }
 
 document.getElementById("randLevel").onclick = function(){
-
 	document.getElementById("userInputBox").value = "";
 	//generate randLevel number 
 	const randLevel = Math.floor(Math.random() * (6 - 1) + 1);
@@ -153,7 +189,7 @@ document.getElementById("randLevel").onclick = function(){
     letterArray = ["",level1Letters,level2Letters,level3Letters,level4Letters,level5Letters];
 	//change the letters on the buttons
 	for(var x = 0; x < 6; x++){
-		//iterate through spli list of level(n)Letters
+		//iterate through split list of level(n)Letters
 		//change the buttons text 
 		var letters = letterArray[randLevel].split(" ");
 		try{
@@ -162,19 +198,12 @@ document.getElementById("randLevel").onclick = function(){
 			continue;
 		}
 	}
+		
 	
 	PrintBoard(letterArray[randLevel]);
 }
 
-function quit(){
-	selectMenu.style.display="initial";
-	levelScreen.style.display = "none";	
 
-	while(document.getElementById("dashList")){
-		document.getElementById("dashList").remove();
-	}
-	//also stop timer
-}
 
 document.getElementById("submit").onclick = function(){
 	//restore all the buttons and clear the text box 
@@ -203,59 +232,6 @@ var level3Letters = "E M I S S L";
 var level4Letters = "R A N Y C O";
 var level5Letters = "G A E D R G";
 
-//printBoard(String[] wordlist, String[] foundAnswers, String level)
-
-function PrintBoard(wordList){
-
-	for(var index of wordList){
-
-		var dashes = "";
-
-		//loop determines how many dashes will be in an answer
-		for(var i = 0; i < index.length; i++){
-			dashes += " _ ";
-		}
-		if(foundAnswers.includes(index)){ // check if word doesnt need to be changed to dashes 
-			gameBoard.set(index,dashes); //replace the maps key with its value
-
-		}else{
-			gameBoard.set(index, dashes);
-		}
-	}
-	var container = document.getElementById("answers")
-	var list = document.createElement("ul");
-	list.setAttribute("id","dashList");
-	//edit the elements to present the gameboard
-	for(var element of gameBoard.values()){
-
-		var word = document.createElement("li");
-		word.setAttribute("id","dashes");
-		word.innerText = element;  
-		list.appendChild(word);
-	}
-	container.appendChild(list);
-
-
-
-	
-}
-
-function CheckAnswer(answer){
-	//take the input from the text box 
-	if(gameBoard.has(answer)){
-		//clear the gameboard and replace the lists key with its value in the gameBoard map, then call PrintBoard again add score as well
-		foundAnswers.push(answer);
-		
-		while(document.getElementById("dashList")){ // clear gameboard 
-			document.getElementById("dashList").remove();
-		}
-
-		PrintBoard(level1key);
-
-
-
-	}
-}
 
 
 

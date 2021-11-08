@@ -13,3 +13,4 @@ level select screen needs to be a hidden element
 style.display = "none" or style.display="initial" : to show or hide elements 
 
 
+ - everytime i start a level and quit, the dashes arent deleted and are added clogging up the screen.
