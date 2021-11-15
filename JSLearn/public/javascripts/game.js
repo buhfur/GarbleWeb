@@ -6,7 +6,6 @@ var foundAnswers = []
 var score = 0;
 
 var gameBoard = new Map(); // holds each word with corresponding dashes 
-var buttonList = document.getElementById("buttonList");
 var shuffleButton = document.getElementById("shuffleButton");
 var letterButtons = buttonList.children;
 var level = "";
@@ -25,7 +24,7 @@ function CheckAnswer(answer){
 function PrintBoard(wordList){
 	//attempt to clear the board 
 
-
+	gameBoard.clear();
 	for(var index of wordList){
 		//loop determines how many dashes will be in an answer
 		var dashes = index.replace(/[a-z]/gi, ' _ ');
@@ -40,21 +39,17 @@ function PrintBoard(wordList){
 	}
 	for(var element of gameBoard.values()){
 		console.log(element);
-		var word = $("<p>", {id: "dashes"}).text(element);
+		var word = $("<p>", {class: "dashes"}).text(element);
 		$("#answers").append(word);
 	}
 
 }
 
-function clearBoard(){
-	console.log("clear board called");
-
-	$("#dashList").empty();
-}
 function quit(){
-	clearBoard();
-	selectMenu.style.display="initial";
-	levelScreen.style.display = "none";	
+	$('div#answers').empty();
+	$('#level').hide();
+	$('#levelSelect').show();
+	
 }
 
 
@@ -70,8 +65,8 @@ shuffleButton.onclick = function(){ //on click to shuffle the letters around
 
 document.getElementById("level1").onclick = function(){
 	//hide level select window
-	selectMenu.style.display="none";
-	levelScreen.style.display = "initial";
+	$('#level').show();
+	$('#levelSelect').hide();
 	userInputBox.autofocus = true;
 	//clear the userInputBox 
 	document.getElementById("userInputBox").value = "";
@@ -84,10 +79,10 @@ document.getElementById("level1").onclick = function(){
 }
 
 document.getElementById("level2").onclick = function(){
-	selectMenu.style.display="none";
-	levelScreen.style.display = "initial";	
 	userInputBox.autofocus = true;
-
+		
+	$('#level').show();
+	$('#levelSelect').hide();
 	document.getElementById("userInputBox").value = "";
 	document.getElementById("levelHead").innerHTML = "Level 2";
 	//change the letters on the buttons
@@ -109,8 +104,8 @@ document.getElementById("level2").onclick = function(){
 }
 
 document.getElementById("level3").onclick = function(){
-	selectMenu.style.display="none";
-	levelScreen.style.display = "initial";	
+	$('#level').show();
+	$('#levelSelect').hide();	
 	userInputBox.autofocus = true;
 	document.getElementById("levelHead").innerHTML = "Level 3";
 	//change the letters on the buttons
@@ -135,8 +130,8 @@ document.getElementById("level3").onclick = function(){
 
 document.getElementById("level4").onclick = function(){
 	document.getElementById("userInputBox").value = "";
-	selectMenu.style.display="none";
-	levelScreen.style.display = "initial";	
+	$('#level').show();
+	$('#levelSelect').hide();	
 	userInputBox.autofocus = true;
 	document.getElementById("levelHead").innerHTML = "Level 4";
 	//change the letters on the buttons
@@ -158,8 +153,8 @@ document.getElementById("level4").onclick = function(){
 
 document.getElementById("level5").onclick = function(){
 	document.getElementById("userInputBox").value = "";
-	selectMenu.style.display="none";
-	levelScreen.style.display = "initial";	
+	$('#level').show();
+	$('#levelSelect').hide();	
 	userInputBox.autofocus = true;
 	document.getElementById("levelHead").innerHTML = "Level 5";
 	//change the letters on the buttons
@@ -183,8 +178,8 @@ document.getElementById("randLevel").onclick = function(){
 	//generate randLevel number 
 	const randLevel = Math.floor(Math.random() * (6 - 1) + 1);
 	document.getElementById("levelHead").innerHTML = "Level " + randLevel;
-	selectMenu.style.display="none";
-	levelScreen.style.display = "initial";	
+	$('#level').show();
+	$('#levelSelect').hide();	
 
     letterArray = ["",level1Letters,level2Letters,level3Letters,level4Letters,level5Letters];
 	//change the letters on the buttons

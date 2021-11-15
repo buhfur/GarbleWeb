@@ -10,6 +10,7 @@ body {
 
 
 .letterButton{
+	position:relative;
 	background-color: #030a02;
 	color:white;
 	font-size: large;
@@ -39,19 +40,12 @@ a {
   color: #00B7FF;
 }
 
-.btn{ 
-	margin: 10px; 
-	float: left;
-	
-}
-.buttons{
-	margin-top: 200px;
-	margin-left: 700px;
-}
+
+
 
 .footer{
 
-	position: relative;
+	position: fixed;
 	left: 0;
 	bottom: 0;
 	width: 100%;
@@ -70,8 +64,14 @@ a {
 
 
 .shuffle{
-	position:fixed;
+	position: relative;
 	margin-left:50px;
+}
+
+.levelSelectButton{
+	padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
 }
 
 #submit{
@@ -79,4 +79,6 @@ a {
 	/*width: 49%;*/
 }
 
-
+#buttonList{
+	padding-left:500px;
+}
