@@ -14,8 +14,15 @@ var level = "";
 
 function PrintBoard(wordList){
 	//attempt to clear the board 
+	console.log('found answers: ' + foundAnswers);
 	$('div#answers').empty();
-	gameBoard.clear();
+	
+	var guessed_words = wordList;
+
+	if(guessed_words.length < 1){
+		quit(); //if the array has no elements, it means the player has guessed all the words 
+	}
+
 	for(var index of wordList){
 		//loop determines how many dashes will be in an answer
 		var dashes = index.replace(/[a-z]/gi, ' _ ');
@@ -24,14 +31,19 @@ function PrintBoard(wordList){
 		if(foundAnswers.includes(index)){ //check if user has already guessed that word 
 			console.log("answer has already been found, replacing key with value....")
 			dashes = index;
+			guessed_words.pop() // removes a word from the list of answers, specific word doesnt matter, only the size of the array determines the end of the game
 			console.log(dashes + ": found answer");
+			console.log("index: " + (index)+ "\ndashes: " + (dashes));
 			gameBoard.set(index,dashes); //replace the maps key with its value
 		}else{
 			gameBoard.set(index, dashes);
 		}
 	}
+	for(var key of gameBoard.keys()){
+		console.log("keys of map : " + (key));
+	}
 	for(var element of gameBoard.values()){
-		console.log(element);
+		console.log("values of Map : " + (element));
 		var word = $("<p>", {class: "dashes"}).text(element);
 		$("#answers").append(word);
 	}
@@ -58,6 +70,8 @@ shuffleButton.onclick = function(){ //on click to shuffle the letters around
 
 
 function selectLevel(id){
+	foundAnswers = []
+	gameBoard.clear();
 	
 	switch(id){
 		case "level1":
@@ -69,7 +83,6 @@ function selectLevel(id){
 			//clear the userInputBox 
 			document.getElementById("userInputBox").value = "";
 			document.getElementById("levelHead").innerHTML = "Level 1";
-			//call function to generate the dashes 
 			for(var x = 0; x < 6; x++){
 
 					//iterate through spli list of level(n)Letters
@@ -208,6 +221,35 @@ document.getElementById("submit").onclick = function(){
 				console.log('is valid answer');
 				foundAnswers.push(userGuess);
 				PrintBoard(level1key);
+			}
+			break;
+		case "level2":
+			if(level2key.indexOf(userGuess) > -1){
+				console.log('is valid answer');
+				foundAnswers.push(userGuess);
+				PrintBoard(level2key);
+			}
+			break;
+		case "level3":
+			if(level3key.indexOf(userGuess) > -1){
+				console.log('is valid answer');
+				foundAnswers.push(userGuess);
+				PrintBoard(level3key);
+			}
+			break;
+		case "level4":
+			if(level4key.indexOf(userGuess) > -1){
+				console.log('is valid answer');
+				foundAnswers.push(userGuess);
+				PrintBoard(level4key);
+			}
+			break;
+		
+		case "level5":
+			if(level5key.indexOf(userGuess) > -1){
+				console.log('is valid answer');
+				foundAnswers.push(userGuess);
+				PrintBoard(level5key);
 			}
 			break;
 	}

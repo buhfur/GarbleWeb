@@ -33,23 +33,23 @@
 			<h1 id="levelHead"> Level x</h1>
 			<h2 id="counter"></h2>
 		</nav>
-	<div class="footer">
-		<div id="userInput"></div>
+	
+		<div class="footer">
+			<ul id="buttonList">
+				<button type="button" class="btn btn-default letterButton" id="letterButton0"  onclick= "addLetter(this.id)" >L</button>
+				<button type="button" class="btn btn-default letterButton" id="letterButton1"  onclick="addLetter(this.id)" >W</button>
+				<button type="button" class="btn btn-default letterButton" id="letterButton2"  onclick="addLetter(this.id)">L</button>
+				<button type="button" class="btn btn-default letterButton" id="letterButton3"  onclick="addLetter(this.id)">M</button>
+				<button type="button" class="btn btn-default letterButton" id="letterButton4"  onclick="addLetter(this.id)">O</button>
+				<button type="button" class="btn btn-default letterButton" id="letterButton5"  onclick="addLetter(this.id)">E</button>
+			</ul>
 			<input type="text" id="userInputBox" value="" required maxlength="6">
 			<button class="btn btn-dark" type="submit" id="submit">Submit</button>
-		</div>
-		<ul id="buttonList">
-			<button type="button" class="btn btn-default letterButton" id="letterButton0"  onclick= "addLetter(this.id)" >L</button>
-			<button type="button" class="btn btn-default letterButton" id="letterButton1"  onclick="addLetter(this.id)" >W</button>
-			<button type="button" class="btn btn-default letterButton" id="letterButton2"  onclick="addLetter(this.id)">L</button>
-			<button type="button" class="btn btn-default letterButton" id="letterButton3"  onclick="addLetter(this.id)">M</button>
-			<button type="button" class="btn btn-default letterButton" id="letterButton4"  onclick="addLetter(this.id)">O</button>
-			<button type="button" class="btn btn-default letterButton" id="letterButton5"  onclick="addLetter(this.id)">E</button>
-		</ul>
-		<div class="shuffle">
 			<button id="shuffleButton" type="button" class="btn btn-large btn-warning">Shuffle</button>
 		</div>
+
 	</div>
+		
 
 
 
