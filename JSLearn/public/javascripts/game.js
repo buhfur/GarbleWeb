@@ -10,20 +10,11 @@ var shuffleButton = document.getElementById("shuffleButton");
 var letterButtons = buttonList.children;
 var level = "";
 
-function CheckAnswer(answer){
-	//take the input from the text box 
-	if(gameBoard.has(answer)){
-		console.log("gameboard has the answer!")
-		//clear the gameboard and replace the lists key with its value in the gameBoard map, then call PrintBoard again add score as well
-		foundAnswers.push(answer);
-		PrintBoard(level1key);
-	}
-}
 
-//printBoard(String[] wordlist, String[] foundAnswers, String level)
+
 function PrintBoard(wordList){
 	//attempt to clear the board 
-
+	$('div#answers').empty();
 	gameBoard.clear();
 	for(var index of wordList){
 		//loop determines how many dashes will be in an answer
@@ -32,7 +23,9 @@ function PrintBoard(wordList){
 		
 		if(foundAnswers.includes(index)){ //check if user has already guessed that word 
 			console.log("answer has already been found, replacing key with value....")
-			gameBoard.set(dashes,index); //replace the maps key with its value
+			dashes = index;
+			console.log(dashes + ": found answer");
+			gameBoard.set(index,dashes); //replace the maps key with its value
 		}else{
 			gameBoard.set(index, dashes);
 		}
@@ -63,152 +56,162 @@ shuffleButton.onclick = function(){ //on click to shuffle the letters around
 	buttonList.appendChild(frag);
 }
 
-document.getElementById("level1").onclick = function(){
-	//hide level select window
-	$('#level').show();
-	$('#levelSelect').hide();
-	userInputBox.autofocus = true;
-	//clear the userInputBox 
-	document.getElementById("userInputBox").value = "";
-	document.getElementById("levelHead").innerHTML = "Level 1";
-	//call function to generate the dashes 
-	PrintBoard(level1key);
 
-
+function selectLevel(id){
 	
-}
+	switch(id){
+		case "level1":
+			// start level here
+			level = id; //used to determine which answer key to use when user submits an answer
+			$('#level').show();
+			$('#levelSelect').hide();
+			userInputBox.autofocus = true;
+			//clear the userInputBox 
+			document.getElementById("userInputBox").value = "";
+			document.getElementById("levelHead").innerHTML = "Level 1";
+			//call function to generate the dashes 
+			for(var x = 0; x < 6; x++){
 
-document.getElementById("level2").onclick = function(){
-	userInputBox.autofocus = true;
+					//iterate through spli list of level(n)Letters
+					//change the buttons text 
+					const letters = level1Letters.split(" ");
+					try{
+
+						document.getElementById("letterButton" + x).innerHTML = letters[x];
+					}catch(error){
+						continue;
+					}
+			}
+			
+			PrintBoard(level1key);
+			break;	
+
+		case "level2":
+			level=id;
+			$('#level').show();
+			$('#levelSelect').hide();
+			document.getElementById("userInputBox").value = "";
+			document.getElementById("levelHead").innerHTML = "Level 2";
+			//change the letters on the buttons
+			for(var x = 0; x < 6; x++){
+
+				//iterate through spli list of level(n)Letters
+				//change the buttons text 
+				const letters = level2Letters.split(" ");
+				try{
+
+					document.getElementById("letterButton" + x).innerHTML = letters[x];
+				}catch(error){
+					continue;
+				}
+			}
+
+			PrintBoard(level2key);
+			break;
+
+		case "level3":
+			level=id
+			$('#level').show();
+			$('#levelSelect').hide();	
+			userInputBox.autofocus = true;
+			document.getElementById("levelHead").innerHTML = "Level 3";
+			//change the letters on the buttons
+
+			document.getElementById("userInputBox").value = "";
+			for(var x = 0; x < 6; x++){
+
+				//iterate through spli list of level(n)Letters
+					//change the buttons text 
+				const letters = level3Letters.split(" ");
+				try{
+
+					document.getElementById("letterButton" + x).innerHTML = letters[x];
+				}catch(error){
+					continue;
+				}
+			}
+
+			PrintBoard(level3key);
+			break;
+
+		case "level4":
+			level=id;
+			$('#level').show();
+			$('#levelSelect').hide();	
+			userInputBox.autofocus = true;
+			document.getElementById("levelHead").innerHTML = "Level 4";
+			//change the letters on the buttons
+
+			document.getElementById("userInputBox").value = "";
+			for(var x = 0; x < 6; x++){
+
+				//iterate through spli list of level(n)Letters
+					//change the buttons text 
+				const letters = level4Letters.split(" ");
+				try{
+
+					document.getElementById("letterButton" + x).innerHTML = letters[x];
+				}catch(error){
+					continue;
+				}
+			}
+
+			PrintBoard(level4key);
+			break;
 		
-	$('#level').show();
-	$('#levelSelect').hide();
-	document.getElementById("userInputBox").value = "";
-	document.getElementById("levelHead").innerHTML = "Level 2";
-	//change the letters on the buttons
-	for(var x = 0; x < 6; x++){
+		case "level5":
+			level=id;
+			$('#level').show();
+			$('#levelSelect').hide();	
+			userInputBox.autofocus = true;
+			document.getElementById("levelHead").innerHTML = "Level 5";
+			//change the letters on the buttons
 
-		//iterate through spli list of level(n)Letters
-		//change the buttons text 
-		const letters = level2Letters.split(" ");
-		try{
+			document.getElementById("userInputBox").value = "";
+			for(var x = 0; x < 6; x++){
 
-			document.getElementById("letterButton" + x).innerHTML = letters[x];
-		}catch(error){
-			continue;
-		}
+				//iterate through spli list of level(n)Letters
+					//change the buttons text 
+				const letters = level5Letters.split(" ");
+				try{
+
+					document.getElementById("letterButton" + x).innerHTML = letters[x];
+				}catch(error){
+					continue;
+				}
+			}
+
+			PrintBoard(level5key);
+			break;
 	}
 
-	PrintBoard(level2key);
 	
 }
 
-document.getElementById("level3").onclick = function(){
-	$('#level').show();
-	$('#levelSelect').hide();	
-	userInputBox.autofocus = true;
-	document.getElementById("levelHead").innerHTML = "Level 3";
-	//change the letters on the buttons
+/****************************************************
+ * check answer section
+ */
 
-	document.getElementById("userInputBox").value = "";
-	for(var x = 0; x < 6; x++){
+function checkAnswer(levelkey, answer){
 
-		//iterate through spli list of level(n)Letters
-			//change the buttons text 
-		const letters = level3Letters.split(" ");
-		try{
-
-			document.getElementById("letterButton" + x).innerHTML = letters[x];
-		}catch(error){
-			continue;
-		}
-	}
-
-	PrintBoard(level3key);
-	
 }
-
-document.getElementById("level4").onclick = function(){
-	document.getElementById("userInputBox").value = "";
-	$('#level').show();
-	$('#levelSelect').hide();	
-	userInputBox.autofocus = true;
-	document.getElementById("levelHead").innerHTML = "Level 4";
-	//change the letters on the buttons
-	for(var x = 0; x < 6; x++){
-
-		//iterate through spli list of level(n)Letters
-		//change the buttons text 
-		const letters = level4Letters.split(" ");
-		try{ 
-			document.getElementById("letterButton" + x).innerHTML = letters[x];
-		}catch(error){
-			console.log(error);
-			continue;
-		}
-	}
-	PrintBoard(level4key);
-	
-}
-
-document.getElementById("level5").onclick = function(){
-	document.getElementById("userInputBox").value = "";
-	$('#level').show();
-	$('#levelSelect').hide();	
-	userInputBox.autofocus = true;
-	document.getElementById("levelHead").innerHTML = "Level 5";
-	//change the letters on the buttons
-	for(var x = 0; x < 6; x++){
-
-		//iterate through spli list of level(n)Letters
-			//change the buttons text 
-		const letters = level5Letters.split(" ");
-		try{
-			document.getElementById("letterButton" + x).innerHTML = letters[x];
-		}catch(error){
-			continue;
-		}
-	}
-	
-	PrintBoard(level5key);
-}
-
-document.getElementById("randLevel").onclick = function(){
-	document.getElementById("userInputBox").value = "";
-	//generate randLevel number 
-	const randLevel = Math.floor(Math.random() * (6 - 1) + 1);
-	document.getElementById("levelHead").innerHTML = "Level " + randLevel;
-	$('#level').show();
-	$('#levelSelect').hide();	
-
-    letterArray = ["",level1Letters,level2Letters,level3Letters,level4Letters,level5Letters];
-	//change the letters on the buttons
-	for(var x = 0; x < 6; x++){
-		//iterate through split list of level(n)Letters
-		//change the buttons text 
-		var letters = letterArray[randLevel].split(" ");
-		try{
-			document.getElementById("letterButton" + x).innerHTML = letters[x];
-		}catch(error){
-			continue;
-		}
-	}
-		
-	
-	PrintBoard(letterArray[randLevel]);
-}
-
-
-
 document.getElementById("submit").onclick = function(){
-	//restore all the buttons and clear the text box 
-	var letButtons = document.getElementsByClassName("letterButton");
-	var userGuess = document.getElementById("userInputBox").value;
-	for(var x of letButtons){
-		x.style.display = "initial";//show all buttons 
+	//show all buttons and check answer
+	var userGuess = $('#userInputBox').val();
+	console.log(level1key.indexOf(userGuess));
+	$('.letterButton').show();
+	$('#userInputBox').val('');	
+	
+	switch(level){
+		case "level1":
+			if(level1key.indexOf(userGuess) > -1){
+				console.log('is valid answer');
+				foundAnswers.push(userGuess);
+				PrintBoard(level1key);
+			}
+			break;
 	}
-	CheckAnswer(userGuess);
-	document.getElementById("userInputBox").value = "";
+
 };
 function addLetter(bId){
 	console.log("i am pressed");
