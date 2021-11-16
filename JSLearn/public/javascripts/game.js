@@ -75,7 +75,7 @@ function selectLevel(id){
 			level = id; //used to determine which answer key to use when user submits an answer
 			$('#level').show();
 			$('#levelSelect').hide();
-			userInputBox.autofocus = true;
+			$('#userInputBox').focus();
 			//clear the userInputBox 
 			document.getElementById("userInputBox").value = "";
 			document.getElementById("levelHead").innerHTML = "Level 1";
@@ -99,6 +99,7 @@ function selectLevel(id){
 			level=id;
 			$('#level').show();
 			$('#levelSelect').hide();
+			$('#userInputBox').focus();
 			document.getElementById("userInputBox").value = "";
 			document.getElementById("levelHead").innerHTML = "Level 2";
 			//change the letters on the buttons
@@ -122,6 +123,7 @@ function selectLevel(id){
 			level=id
 			$('#level').show();
 			$('#levelSelect').hide();	
+			$('#userInputBox').focus();
 			userInputBox.autofocus = true;
 			document.getElementById("levelHead").innerHTML = "Level 3";
 			//change the letters on the buttons
@@ -147,6 +149,7 @@ function selectLevel(id){
 			level=id;
 			$('#level').show();
 			$('#levelSelect').hide();	
+			$('#userInputBox').focus();
 			userInputBox.autofocus = true;
 			document.getElementById("levelHead").innerHTML = "Level 4";
 			//change the letters on the buttons
@@ -172,6 +175,7 @@ function selectLevel(id){
 			level=id;
 			$('#level').show();
 			$('#levelSelect').hide();	
+			$('#userInputBox').focus();
 			userInputBox.autofocus = true;
 			document.getElementById("levelHead").innerHTML = "Level 5";
 			//change the letters on the buttons
@@ -201,8 +205,11 @@ function selectLevel(id){
  * check answer section
  */
 
+
 function checkAnswer(answerKey, userGuess, foundAnswers){
+	userGuess = userGuess.toUpperCase();
 	if(score == answerKey.length){
+		//go to winner screen?
 		quit();
 	}
 	if(answerKey.includes(userGuess)){ 	//may change this to an "level1key.includes(userGuess)"
@@ -219,8 +226,13 @@ function checkAnswer(answerKey, userGuess, foundAnswers){
 	}
 
 }
-
-document.getElementById("submit").onclick = function(){
+$('#userInputBox').on("keyup", function(e) {
+	if(e.keyCode == 13){
+		submit();
+		$('userInputBox').focus(); 
+	}
+})
+function submit(){
 	
 	//show all buttons and check answer
 	var userGuess = $('#userInputBox').val();

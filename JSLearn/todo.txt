@@ -1,8 +1,5 @@
-- add animation of the buttons floating to the brown box when user selects them 
-- add answer empty spaces 
 - add timer
 - calculate points based off of time it takes to answer
-- move to next level 
 
 level select screen needs to be a hidden element 
 
@@ -10,7 +7,4 @@ level select screen needs to be a hidden element
         Random notes 
 ======================================
 
-style.display = "none" or style.display="initial" : to show or hide elements 
 
-
- - everytime i start a level and quit, the dashes arent deleted and are added clogging up the screen.
