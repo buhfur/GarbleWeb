@@ -14,12 +14,11 @@ var level = "";
 
 function PrintBoard(wordList){
 	//attempt to clear the board 
-	console.log('found answers: ' + foundAnswers);
+	console.log("length of word list : " + wordList.length);
 	$('div#answers').empty();
 	
-	var guessed_words = wordList;
 
-	if(guessed_words.length < 1){
+	if(score == wordList.length){
 		quit(); //if the array has no elements, it means the player has guessed all the words 
 	}
 
@@ -31,7 +30,6 @@ function PrintBoard(wordList){
 		if(foundAnswers.includes(index)){ //check if user has already guessed that word 
 			console.log("answer has already been found, replacing key with value....")
 			dashes = index;
-			guessed_words.pop() // removes a word from the list of answers, specific word doesnt matter, only the size of the array determines the end of the game
 			console.log(dashes + ": found answer");
 			console.log("index: " + (index)+ "\ndashes: " + (dashes));
 			gameBoard.set(index,dashes); //replace the maps key with its value
@@ -39,9 +37,7 @@ function PrintBoard(wordList){
 			gameBoard.set(index, dashes);
 		}
 	}
-	for(var key of gameBoard.keys()){
-		console.log("keys of map : " + (key));
-	}
+
 	for(var element of gameBoard.values()){
 		console.log("values of Map : " + (element));
 		var word = $("<p>", {class: "dashes"}).text(element);
@@ -72,7 +68,7 @@ shuffleButton.onclick = function(){ //on click to shuffle the letters around
 function selectLevel(id){
 	foundAnswers = []
 	gameBoard.clear();
-	
+	score = 0;
 	switch(id){
 		case "level1":
 			// start level here
@@ -205,58 +201,52 @@ function selectLevel(id){
  * check answer section
  */
 
-function checkAnswer(levelkey, answer){
+function checkAnswer(answerKey, userGuess, foundAnswers){
+	if(score == answerKey.length){
+		quit();
+	}
+	if(answerKey.includes(userGuess)){ 	//may change this to an "level1key.includes(userGuess)"
+		console.log('is valid answer');
+		if(!foundAnswers.includes(userGuess)){
+			score++;
+			console.log(score);
+		}
+		foundAnswers.push(userGuess);
+		PrintBoard(answerKey);
+	}else{
+		//play a little error sound effect?
+		console.log("wrong answer");
+	}
 
 }
+
 document.getElementById("submit").onclick = function(){
+	
 	//show all buttons and check answer
 	var userGuess = $('#userInputBox').val();
-	console.log(level1key.indexOf(userGuess));
 	$('.letterButton').show();
 	$('#userInputBox').val('');	
 	
 	switch(level){
 		case "level1":
-			if(level1key.indexOf(userGuess) > -1){
-				console.log('is valid answer');
-				foundAnswers.push(userGuess);
-				PrintBoard(level1key);
-			}
+			checkAnswer(level1key,userGuess,foundAnswers);
 			break;
 		case "level2":
-			if(level2key.indexOf(userGuess) > -1){
-				console.log('is valid answer');
-				foundAnswers.push(userGuess);
-				PrintBoard(level2key);
-			}
+			checkAnswer(level2key,userGuess,foundAnswers);
 			break;
 		case "level3":
-			if(level3key.indexOf(userGuess) > -1){
-				console.log('is valid answer');
-				foundAnswers.push(userGuess);
-				PrintBoard(level3key);
-			}
+			checkAnswer(level3key,userGuess,foundAnswers);
 			break;
 		case "level4":
-			if(level4key.indexOf(userGuess) > -1){
-				console.log('is valid answer');
-				foundAnswers.push(userGuess);
-				PrintBoard(level4key);
-			}
+			checkAnswer(level4key,userGuess,foundAnswers);
 			break;
-		
 		case "level5":
-			if(level5key.indexOf(userGuess) > -1){
-				console.log('is valid answer');
-				foundAnswers.push(userGuess);
-				PrintBoard(level5key);
-			}
+			checkAnswer(level5key,userGuess,foundAnswers);
 			break;
 	}
 
 };
 function addLetter(bId){
-	console.log("i am pressed");
 	document.getElementById("userInputBox").value += document.getElementById(bId).innerText;
 	document.getElementById(bId).style.display = "none";//hide the button since it can bypass the character limit on the input 	
 }

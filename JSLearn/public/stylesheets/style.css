@@ -79,5 +79,6 @@ a {
 }
 #answers{
 	position:relative;
-	bottom:0;
+	top:90px;
+	
 }
