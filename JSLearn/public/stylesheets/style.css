@@ -1,19 +1,25 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: rgb(160, 93, 26) !important;
+  background-color: rgb(57, 49, 160) !important;
 }
 
 .level{
 	display: none;
+	position:fixed;
+}
+.dashes{
+	color:white;
 }
 
 
 .letterButton{
-	position:relative;
+	display: inline-flex;
 	background-color: #030a02;
 	color:white;
-	font-size: large;
+	font-size: 30px !important;
+	width: 70px;
+	margin-top: -300px;
 	transition-duration: 0.4s;
 }
 .letterButton:hover{
@@ -43,17 +49,6 @@ a {
 
 
 
-.footer{
-
-	position: relative;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height:330px;
-	background-color: #006E33;
-	color: white;
-	text-align: center;	
-}
 
 /* Add a black background color to the top navigation */
 .header {
@@ -73,12 +68,17 @@ a {
     font-size: 20px;
     border-radius: 10px;
 }
-
-#submit{
-	float:left;
-	/*width: 49%;*/
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(47, 108, 187);
+  color: white;
+  text-align: center;
 }
-
-#buttonList{
-	padding-left:500px;
+#answers{
+	position:relative;
+	top:90px;
+	
 }

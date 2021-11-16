@@ -14,8 +14,14 @@ var level = "";
 
 function PrintBoard(wordList){
 	//attempt to clear the board 
+	console.log("length of word list : " + wordList.length);
 	$('div#answers').empty();
-	gameBoard.clear();
+	
+
+	if(score == wordList.length){
+		quit(); //if the array has no elements, it means the player has guessed all the words 
+	}
+
 	for(var index of wordList){
 		//loop determines how many dashes will be in an answer
 		var dashes = index.replace(/[a-z]/gi, ' _ ');
@@ -25,13 +31,15 @@ function PrintBoard(wordList){
 			console.log("answer has already been found, replacing key with value....")
 			dashes = index;
 			console.log(dashes + ": found answer");
+			console.log("index: " + (index)+ "\ndashes: " + (dashes));
 			gameBoard.set(index,dashes); //replace the maps key with its value
 		}else{
 			gameBoard.set(index, dashes);
 		}
 	}
+
 	for(var element of gameBoard.values()){
-		console.log(element);
+		console.log("values of Map : " + (element));
 		var word = $("<p>", {class: "dashes"}).text(element);
 		$("#answers").append(word);
 	}
@@ -58,7 +66,9 @@ shuffleButton.onclick = function(){ //on click to shuffle the letters around
 
 
 function selectLevel(id){
-	
+	foundAnswers = []
+	gameBoard.clear();
+	score = 0;
 	switch(id){
 		case "level1":
 			// start level here
@@ -69,7 +79,6 @@ function selectLevel(id){
 			//clear the userInputBox 
 			document.getElementById("userInputBox").value = "";
 			document.getElementById("levelHead").innerHTML = "Level 1";
-			//call function to generate the dashes 
 			for(var x = 0; x < 6; x++){
 
 					//iterate through spli list of level(n)Letters
@@ -192,29 +201,52 @@ function selectLevel(id){
  * check answer section
  */
 
-function checkAnswer(levelkey, answer){
+function checkAnswer(answerKey, userGuess, foundAnswers){
+	if(score == answerKey.length){
+		quit();
+	}
+	if(answerKey.includes(userGuess)){ 	//may change this to an "level1key.includes(userGuess)"
+		console.log('is valid answer');
+		if(!foundAnswers.includes(userGuess)){
+			score++;
+			console.log(score);
+		}
+		foundAnswers.push(userGuess);
+		PrintBoard(answerKey);
+	}else{
+		//play a little error sound effect?
+		console.log("wrong answer");
+	}
 
 }
+
 document.getElementById("submit").onclick = function(){
+	
 	//show all buttons and check answer
 	var userGuess = $('#userInputBox').val();
-	console.log(level1key.indexOf(userGuess));
 	$('.letterButton').show();
 	$('#userInputBox').val('');	
 	
 	switch(level){
 		case "level1":
-			if(level1key.indexOf(userGuess) > -1){
-				console.log('is valid answer');
-				foundAnswers.push(userGuess);
-				PrintBoard(level1key);
-			}
+			checkAnswer(level1key,userGuess,foundAnswers);
+			break;
+		case "level2":
+			checkAnswer(level2key,userGuess,foundAnswers);
+			break;
+		case "level3":
+			checkAnswer(level3key,userGuess,foundAnswers);
+			break;
+		case "level4":
+			checkAnswer(level4key,userGuess,foundAnswers);
+			break;
+		case "level5":
+			checkAnswer(level5key,userGuess,foundAnswers);
 			break;
 	}
 
 };
 function addLetter(bId){
-	console.log("i am pressed");
 	document.getElementById("userInputBox").value += document.getElementById(bId).innerText;
 	document.getElementById(bId).style.display = "none";//hide the button since it can bypass the character limit on the input 	
 }
