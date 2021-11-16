@@ -1,4 +1,3 @@
-- allow user to type answers, once the user presses enter, the text box refocuses 
 - add timer
 - calculate points based off of time it takes to answer
 
