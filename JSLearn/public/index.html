@@ -4,7 +4,6 @@
   <title>Garble!</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -25,13 +24,13 @@
 			</div>
 	</div>
 	<div class="level" id="level">
-		<div id="answers">
+		<div class="grid-container" id="answers">
 
 		</div>	
 		<nav class="navbar fixed-top navbar-dark bg-dark">
 			<button type="button" class="btn btn-danger" id="quit" onclick="quit()">QUIT</button> 
 			<h1 id="levelHead"> Level x</h1>
-			<h2 id="counter"></h2>
+			<h2 id="timer"></h2>
 		</nav>
 	
 		<div class="footer">
@@ -54,8 +53,8 @@
 
 
 
-
 	<script src="javascripts/game.js"></script>
+	<script src="javascripts/timer.js"></script>
 </div>
 </body>
 

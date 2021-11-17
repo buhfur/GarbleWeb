@@ -40,7 +40,7 @@ function PrintBoard(wordList){
 
 	for(var element of gameBoard.values()){
 		console.log("values of Map : " + (element));
-		var word = $("<p>", {class: "dashes"}).text(element);
+		var word = $("<p>", {class: "dashes grid-item"}).text(element);
 		$("#answers").append(word);
 	}
 
@@ -97,6 +97,7 @@ function selectLevel(id){
 
 		case "level2":
 			level=id;
+			startTimer();
 			$('#level').show();
 			$('#levelSelect').hide();
 			$('#userInputBox').focus();

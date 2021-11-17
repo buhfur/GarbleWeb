@@ -4,6 +4,19 @@ body {
   background-color: rgb(57, 49, 160) !important;
 }
 
+.grid-container{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+	grid-auto-rows: minmax(100px, auto);
+}
+#calculatedScore{
+	color:white !important;
+}
+#levelHead{
+	position:fixed;
+	margin-left: 850px;
+}
 .level{
 	display: none;
 	position:fixed;
