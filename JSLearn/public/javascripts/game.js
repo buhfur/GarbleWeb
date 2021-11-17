@@ -20,6 +20,7 @@ function PrintBoard(wordList){
 
 	if(score == wordList.length){
 		quit(); //if the array has no elements, it means the player has guessed all the words 
+		selectLevel(level);
 	}
 
 	for(var index of wordList){
@@ -65,6 +66,13 @@ shuffleButton.onclick = function(){ //on click to shuffle the letters around
 	buttonList.appendChild(frag);
 }
 
+function randomLevel(){
+
+	var randNum = Math.floor(Math.random() * (5 - 1) + 1);
+	var randLevelString = 'level' + randNum;
+	console.log("random level is : " + randNum);
+	selectLevel(randLevelString);
+}
 
 function selectLevel(id){
 	foundAnswers = []
@@ -100,7 +108,8 @@ function selectLevel(id){
 		case "level2":
 			level=id;
 			$('#level').show();
-			$('#levelSelect').hide();
+			$('.background-one').hide();
+			$('.link-container').hide();
 			$('#userInputBox').focus();
 			document.getElementById("userInputBox").value = "";
 			document.getElementById("levelHead").innerHTML = "Level 2";
@@ -124,8 +133,9 @@ function selectLevel(id){
 		case "level3":
 			level=id
 			$('#level').show();
-			$('#levelSelect').hide();	
 			$('#userInputBox').focus();
+			$('.link-container').hide();
+			$('.background-one').hide();
 			userInputBox.autofocus = true;
 			document.getElementById("levelHead").innerHTML = "Level 3";
 			//change the letters on the buttons
@@ -150,8 +160,9 @@ function selectLevel(id){
 		case "level4":
 			level=id;
 			$('#level').show();
-			$('#levelSelect').hide();	
 			$('#userInputBox').focus();
+			$('.link-container').hide();
+			$('.background-one').hide();
 			userInputBox.autofocus = true;
 			document.getElementById("levelHead").innerHTML = "Level 4";
 			//change the letters on the buttons
@@ -176,8 +187,9 @@ function selectLevel(id){
 		case "level5":
 			level=id;
 			$('#level').show();
-			$('#levelSelect').hide();	
 			$('#userInputBox').focus();
+			$('.link-container').hide();
+			$('.background-one').hide();
 			userInputBox.autofocus = true;
 			document.getElementById("levelHead").innerHTML = "Level 5";
 			//change the letters on the buttons

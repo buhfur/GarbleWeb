@@ -118,11 +118,11 @@ a {
 
 
 .background-one {
-	background-color: #151515;
+	background-color: #8f3f3f;
 }
   
 .background-two {
-background-color: #151515;
+background-color: #0d2986;
 }
 
 .background-three {
@@ -145,13 +145,13 @@ font-size: 2.5em;
 }
 
 .link-one {
-color: #53d9d1;
+color: #e0ac32;
 transition: color 1s cubic-bezier(0.32, 0, 0.67, 0);
 line-height: 1em;
 }
 
 .link-one:hover {
-color: #111;
+color: rgb(188, 199, 41);
 transition: color 1s cubic-bezier(0.33, 1, 0.68, 1);
 
 /* Thanks Chris Coyier, you got my back always. https://css-tricks.com/different-transitions-for-hover-on-hover-off/ */
@@ -165,7 +165,7 @@ width: 100%;
 height: 100%;
 top: 0;
 right: 0;
-background-color: #53d9d1;
+background-color: #e4d82e;
 
 clip-path: circle(0% at 50% calc(50%));
 transition: clip-path 1s cubic-bezier(0.65, 0, 0.35, 1);
