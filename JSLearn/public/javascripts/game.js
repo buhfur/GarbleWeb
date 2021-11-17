@@ -49,7 +49,8 @@ function PrintBoard(wordList){
 function quit(){
 	$('div#answers').empty();
 	$('#level').hide();
-	$('#levelSelect').show();
+	$('.background-one').show();
+	$('.link-container').show();
 	
 }
 
@@ -74,7 +75,8 @@ function selectLevel(id){
 			// start level here
 			level = id; //used to determine which answer key to use when user submits an answer
 			$('#level').show();
-			$('#levelSelect').hide();
+			$('.link-container').hide();
+			$('.background-one').hide();
 			$('#userInputBox').focus();
 			//clear the userInputBox 
 			document.getElementById("userInputBox").value = "";

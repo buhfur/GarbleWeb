@@ -8,20 +8,21 @@
 </head>
 
 <body>
+		<div class="background-one">
+			<div class="link-container">
+				<a class="link-one levelSelectButton" onclick='selectLevel(this.id)'  id='level1'>Normal</a>
+			</div>
+		</div>
+		<div class="background-two link-container">
+				<a class="link-two levelSelectButton" onclick='selectLevel(this.id)'  id='level2'>Random</a>
+		</div>
+		<div class="background-three link-container">
+			<a class="link-three levelSelectButton" href="https://jhancock532.github.io/link-hover-effects/">Endless</a>
+		</div>
 	<div class="levelSelect" id="levelSelect">
 
 	
-			<div class="btn-group-vertical">
-
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="level1" >Level 1</button>
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="level2" >Level 2</button>
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="level3" >Level 3</button>
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="level4" >Level 4</button>
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="level5" >Level 5</button>
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="randLevel" >Random</button>
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="endlessButton" >Endless (experimental)</button>
-
-			</div>
+  	<script src='javascripts/test.js'></script>
 	</div>
 	<div class="level" id="level">
 		<div class="grid-container" id="answers">
@@ -33,18 +34,19 @@
 			<h2 id="timer"></h2>
 		</nav>
 	
-		<div class="footer">
-			<ul id="buttonList">
-				<button type="button" class="btn btn-default letterButton" id="letterButton0"  onclick= "addLetter(this.id)" >L</button>
-				<button type="button" class="btn btn-default letterButton" id="letterButton1"  onclick="addLetter(this.id)" >W</button>
-				<button type="button" class="btn btn-default letterButton" id="letterButton2"  onclick="addLetter(this.id)">L</button>
-				<button type="button" class="btn btn-default letterButton" id="letterButton3"  onclick="addLetter(this.id)">M</button>
-				<button type="button" class="btn btn-default letterButton" id="letterButton4"  onclick="addLetter(this.id)">O</button>
-				<button type="button" class="btn btn-default letterButton" id="letterButton5"  onclick="addLetter(this.id)">E</button>
-			</ul>
+		<div class="userAnswer">
+			
 			<input type="text" id="userInputBox" value="" required maxlength="6">
-			<button class="btn btn-dark" type="submit" id="submit" onclick="submit()">Submit</button>
-			<button id="shuffleButton" type="button" class="btn btn-large btn-warning">Shuffle</button>
+			<button class="btn btn-dark submit" type="submit" id="submit" onclick="submit()">Submit</button>
+			<button id="shuffleButton" type="button" class="btn btn-large btn-warning submit">Shuffle</button>
+		</div>
+		<div id="buttonList">
+			<button type="button" class="btn btn-default letterButton" id="letterButton0"  onclick= "addLetter(this.id)" >L</button>
+			<button type="button" class="btn btn-default letterButton" id="letterButton1"  onclick="addLetter(this.id)" >W</button>
+			<button type="button" class="btn btn-default letterButton" id="letterButton2"  onclick="addLetter(this.id)">L</button>
+			<button type="button" class="btn btn-default letterButton" id="letterButton3"  onclick="addLetter(this.id)">M</button>
+			<button type="button" class="btn btn-default letterButton" id="letterButton4"  onclick="addLetter(this.id)">O</button>
+			<button type="button" class="btn btn-default letterButton" id="letterButton5"  onclick="addLetter(this.id)">E</button>
 		</div>
 
 	</div>
