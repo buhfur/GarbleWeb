@@ -25,6 +25,9 @@ body {
 	color:white;
 }
 
+#timer{
+	color: white !important;
+}
 
 .letterButton{
 	display: inline-flex;

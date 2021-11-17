@@ -97,7 +97,6 @@ function selectLevel(id){
 
 		case "level2":
 			level=id;
-			startTimer();
 			$('#level').show();
 			$('#levelSelect').hide();
 			$('#userInputBox').focus();
