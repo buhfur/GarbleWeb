@@ -2,6 +2,7 @@ body {
 	margin: 0;
 	height: 100vh;
 	display: grid;
+	width: 100%;
 	background-color: rgb(29, 74, 158) !important;
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: 1fr;
@@ -52,6 +53,16 @@ body {
 	display:grid;
 	
 }
+
+@media(max-width: 600px){
+
+
+}
+@media(max-width: 600px){
+
+
+}
+
 
 .dashes{
 	color:white;
