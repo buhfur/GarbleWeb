@@ -9,7 +9,3 @@ level select screen needs to be a hidden element
 
  - the letter buttons will shift closer together and change the size of the footer
  which is really annoying. need to fix
-
-- change the design of the game where there are only 3 game modes. normal, random, and endless
-- normal follows a normal path of levels 1-5 with the game incrementing every time 
-- also should add a little instructional message before the user plays the game 
