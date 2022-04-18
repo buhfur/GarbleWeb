@@ -1,0 +1,46 @@
+const level1key = [
+	"ELM","LOW","OWE","OWL","MELLOW","MEOW","MEW","MEWL","MOLE","MOLL","MOW","WELL","WOE","ELL","LOWE","OLE","MOL","MEL"];
+
+
+	possible tree 
+
+
+
+*question :
+
+	* how to make an encrypted tree data structure ?
+	* where the user can't see the array of values 
+
+
+For example : 
+
+	Input : MOE  
+
+
+	x There are seven words that start with M (uppercase ) which in different conversions
+		Dec: 077,
+		hex: 4d,
+		octal: 115,
+		bits : 01001101,
+
+
+		PROOF OF CONCEPT ??? OR MADNESS?????
+WHAT IF IN THIS TRIE, THE EDGE CONNECTING TWO VERTICES IS ACTUALLY ANOTHER ENCRYPTED KEY 
+
+so like : 
+
+in this trie 
+
+	M = 077 ( dec )
+       / 0x55980 
+      E = 069
+     / 0x34908 ( random bullshit keys just pretend they are unique encryption keys  
+    ...
+    ...
+
+So if we were to format this in an array it would look something like this : 
+
+Words = [ 077, 0x55980, 069, 0x34908 , ....] 
+		^--key to decrypt the next value 
+
+
