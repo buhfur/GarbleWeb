@@ -40,7 +40,7 @@ def get_game_data(size):
     for _ in range(size) :
         link = f"http://anagramica.com/api/best/{''.join(letters) }"
 
-    #query the api 
+    #query the api ppend to JSON file using Python
 
     
 
@@ -65,8 +65,8 @@ app = Flask(__name__)
 #query the scrabble api here 
 @app.route('/game')
 def game():
-    #pass in data to jiinja from the get_game_data function 
-   requests.get( 
+    #pass in data to jiinja from the get_game_data1 function 
+   requests.get(generateUrl 
 @app.route('/')
 def index():
     return render_template('index.html')
