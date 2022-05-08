@@ -52,7 +52,6 @@ def make_req(url=None):
     if type(url) is list:
         resp = [requests.get(url) for url in range(len(url)) ]
 
-    else if 
 
     return resp
         
@@ -63,10 +62,11 @@ app = Flask(__name__)
 
 
 #query the scrabble api here 
-@app.route('/game')
+'''@app.route('/game')
 def game():
     #pass in data to jiinja from the get_game_data1 function 
-   requests.get(generateUrl 
+   #requests.get(generateUrl)
+'''
 @app.route('/')
 def index():
     return render_template('index.html')
