@@ -1,12 +1,14 @@
 //first javascript game project 
-const selectMenu = document.getElementById("levelSelect");
+/*const selectMenu = document.getElementById("levelSelect");
 const levelScreen = document.getElementById("level");
 const answers = document.getElementById("answers");
-var foundAnswers = [] 
+*/
+
+var selectMenu = $('.levelSelect');
+var foundAnswers = [] // holds correct answers entered by the user  
 var score = 0;
 var gameBoard = new Map(); // holds each word with corresponding dashes 
-var shuffleButton = document.getElementById("shuffleButton");
-
+var shuffleButton = $("#shuffleButton");
 var letterButtons = buttonList.children;
 var level = "";
 
@@ -14,7 +16,6 @@ var level = "";
 
 function PrintBoard(wordList){
         //attempt to clear the board 
-        console.log("length of word list : " + wordList.length);
         $('div#answers').empty();
 
 
@@ -26,12 +27,8 @@ function PrintBoard(wordList){
                 //loop determines how many dashes will be in an answer
                 var dashes = index.replace(/[a-z]/gi, ' _ ');
 
-
                 if(foundAnswers.includes(index)){ //check if user has already guessed that word 
-                        console.log("answer has already been found, replacing key with value....")
                         dashes = index;
-                        console.log(dashes + ": found answer");
-                        console.log("index: " + (index)+ "\ndashes: " + (dashes));
                         gameBoard.set(index,dashes); //replace the maps key with its value
                 }else{
                         gameBoard.set(index, dashes);
@@ -39,13 +36,13 @@ function PrintBoard(wordList){
         }
 
         for(var element of gameBoard.values()){
-                console.log("values of Map : " + (element));
                 var word = $("<p>", {class: "dashes grid-item"}).text(element);
                 $("#answers").append(word);
         }
 
 }
 
+//resets the UI back to the level selection page 
 function quit(){
         $('div#answers').empty();
         $('#level').hide();
@@ -54,7 +51,10 @@ function quit(){
 }
 
 
-/** EVENT LISTENERS  */
+
+
+
+/** TODO: plan to replace this with a jquery version but this works for now */
 shuffleButton.onclick = function(){ //on click to shuffle the letters around 
 
         var frag = document.createDocumentFragment(); //holds elements temporarily 
@@ -64,13 +64,38 @@ shuffleButton.onclick = function(){ //on click to shuffle the letters around
         buttonList.appendChild(frag);
 }
 
+
+
+
+
+
 //function that reads the level data file and returns the data as an Object
-export async function getLevelData(file){
-  let fetch_file = await fetch(file);
-  let file_text = await fetch_file.text();
-  console.log(JSON.parse(file_text));
+async function getLevelData(file){
+  let fileObject = await fetch(file);
+  let fileText = await fetch_file.text();
+  return JSON.parse(file_text); // return the object
 }
 
+// event that effectively starts the game and the timer , as well as sets up the UI for the level 
+$('.levelSelectButton').on('click', function(event){
+
+        foundAnswers = [] // array for caching the correctly guessed answers from the player
+        gameBoard.clear(); //clears any UI from a previous level
+        score = 0; // resets the players score 
+        $('#userInputBox').val('');//clears the input box
+        $('#level').show(); // present the Parent UI for the level 
+        $('#levelSelect').hide();	
+        $('#userInputBox').focus(); // focus the input box so the user can enter answers quickly without having to re-click the input box
+        //create n buttons with the n letters you are given
+
+        $('#buttonList').show();
+        var buttonListItems = $('#buttonList li');
+        for(let li of buttonListItems){
+                console.log($(li));
+        }
+
+});
+/*
 function selectLevel(id){
         foundAnswers = [] // array for caching the correctly guessed answers from the player
         gameBoard.clear(); //clears any UI from a previous level
@@ -90,15 +115,16 @@ function selectLevel(id){
                 //changes the buttons text to match the corresponding letters for the level using a cached json file for the data 
                 const letters = level5Letters.split(" ");
                 try{
-                        document.getElementById("letterButton" + x).innerHTML = letters[x];
+                        //document.getElementById("letterButton" + x).innerHTML = letters[x];
+
+                        
                 }catch(error){
-                        console.log(error);;
                 }
         }
 
         PrintBoard(key[id]);
         
-        /*	switch(id){
+        	switch(id){
     case "level1":
                 // start level here
       level = id; //used to determine which answer key to use when user submits an answer
@@ -230,7 +256,7 @@ function selectLevel(id){
 
 
 
-      }
+
 
 /****************************************************
  * check answer section
@@ -244,16 +270,13 @@ function checkAnswer(answerKey, userGuess, foundAnswers){
                 quit();
         }
         if(answerKey.includes(userGuess)){ 	//may change this to an "level1key.includes(userGuess)"
-                console.log('is valid answer');
                 if(!foundAnswers.includes(userGuess)){
                         score++;
-                        console.log(score);
                 }
                 foundAnswers.push(userGuess);
                 PrintBoard(answerKey);
         }else{
                 //play a little error sound effect?
-                console.log("wrong answer");
         }
 
 }

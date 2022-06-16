@@ -8,26 +8,26 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="javascripts/game.js" type="module"></script>
 	<script src="javascripts/timer.js"></script>
-  <script src="javascripts/test.js" type="module"></script>
+  <!--<script src="javascripts/test.js" type="module"></script> -->
 </head>
 
 <body>
-	<div class="levelSelect" id="levelSelect">
+	<div class="levelSelect" >
 
 	
-			<div class="btn-group-vertical">
+			<div class="btn-group-vertical levelButtonGroup">
 
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="level1" >Level 1</button>
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="level2" >Level 2</button>
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="level3" >Level 3</button>
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="level4" >Level 4</button>
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="level5" >Level 5</button>
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="randLevel" >Random</button>
-				<button type="button" class="btn btn-default levelSelectButton" onclick="selectLevel(this.id)" id="endlessButton" >Endless (experimental)</button>
+				<button type="button" class="btn btn-default levelSelectButton"  id="level1" >Level 1</button>
+				<button type="button" class="btn btn-default levelSelectButton"  id="level2" >Level 2</button>
+				<button type="button" class="btn btn-default levelSelectButton"  id="level3" >Level 3</button>
+				<button type="button" class="btn btn-default levelSelectButton"  id="level4" >Level 4</button>
+				<button type="button" class="btn btn-default levelSelectButton"  id="level5" >Level 5</button>
+				<button type="button" class="btn btn-default levelSelectButton"  id="randLevel" >Random</button>
+				<button type="button" class="btn btn-default levelSelectButton"  id="endlessButton" >Endless (experimental)</button>
 
 			</div>
 	</div>
-	<div class="level" id="level">
+	<div class="level" >
 		<div class="grid-container" id="answers">
 
 		</div>	
@@ -37,14 +37,14 @@
 			<h2 id="timer"></h2>
 		</nav>
 	
-		<div class="footer">
+		<div class="footer ansButtons">
 			<ul id="buttonList">
-				<button type="button" class="btn btn-default letterButton" id="letterButton0"  onclick= "addLetter(this.id)" >L</button>
-				<button type="button" class="btn btn-default letterButton" id="letterButton1"  onclick="addLetter(this.id)" >W</button>
-				<button type="button" class="btn btn-default letterButton" id="letterButton2"  onclick="addLetter(this.id)">L</button>
-				<button type="button" class="btn btn-default letterButton" id="letterButton3"  onclick="addLetter(this.id)">M</button>
-				<button type="button" class="btn btn-default letterButton" id="letterButton4"  onclick="addLetter(this.id)">O</button>
-				<button type="button" class="btn btn-default letterButton" id="letterButton5"  onclick="addLetter(this.id)">E</button>
+				<button type="button" class="btn btn-default letterButton" id="letterButton0">L</button>
+				<button type="button" class="btn btn-default letterButton" id="letterButton1"  >W</button>
+        <button type="button" class="btn btn-default letterButton" id="letterButton2"  >L</button>
+        <button type="button" class="btn btn-default letterButton" id="letterButton3"  >M</button>
+        <button type="button" class="btn btn-default letterButton" id="letterButton4"  >O</button>
+        <button type="button" class="btn btn-default letterButton" id="letterButton5"  >E</button>
 			</ul>
 			<input type="text" id="userInputBox" value="" required maxlength="6">
 			<button class="btn btn-dark" type="submit" id="submit" onclick="submit()">Submit</button>
