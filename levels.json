@@ -1,0 +1,28 @@
+
+{
+        "1": {
+          
+          "key" : ["ELM","LOW","OWE","OWL","MELLOW","MEOW","MEW","MEWL","MOLE","MOLL","MOW","WELL","WOE","ELL","LOWE","OLE","MOL","MEL" ],
+          "letters":["L", "W", "L" ,"M","O","E"]
+        },
+        "2": {
+          
+          "key": ["FIG","FIT","SIT","HIS","HIT","IFS","ITS","FIGS","FITS","FISH","FIST","SIGH","SIFT","HITS","GIFT","GIST","THIS","FIGHT","GIFTS","SHIFT","SIGHT","FLIGHTS"],
+          "letters" : ["H","S","G", "F", "T","I"]
+        },
+        "3": {
+          "key": ["ELM","LEI","LIE","MIL","ELMS","MISS","MISE","MESS","MILE","ISLE","SEMI","SLIM","LIME","LESS","LEIS","LIES","MILES","ISLES","SLIMS","SMILE","SMILE","SLIME","LIMES","SMILES","SLIMES"],
+          "letters" : ["E","M", "I", "S", "S", "L"]
+
+        },
+        "4": {
+          "key": ["RAN","RAY","ANY","ARC","NAY","NOR","CON","CAN","CAR","CAY","COY","OAR","YON","ORCA","CYAN","CORN","YARN","RACY","ROAN","NARY","CORNY","RAYON","CARN","CRONY","ACORN","CRAYON"],
+          "letters" : ["R", "A", "N","Y", "C", "O"]
+
+        },
+        "5": {
+          "key": ["AGE","RED","ARE","RAG","EAR","DAG","GAD","GAG","RAD","EGG","AGED","DARE","DREG","DRAG","GAGE","RAGE","DEAR","READ","EGAD","GEAR","RAGED","GRADE","DAGGER","RAGGED"],
+          "letters" : ["G", "A", "E", "D", "R", "G"]
+
+        }
+}
