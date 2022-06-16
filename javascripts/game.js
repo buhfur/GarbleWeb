@@ -64,30 +64,35 @@ shuffleButton.onclick = function(){ //on click to shuffle the letters around
         buttonList.appendChild(frag);
 }
 
+//function that reads the level data file and returns the data as an Object
+export async function getLevelData(file){
+  let fetch_file = await fetch(file);
+  let file_text = await fetch_file.text();
+  console.log(JSON.parse(file_text));
+}
 
 function selectLevel(id){
-        foundAnswers = []
-        gameBoard.clear();
-        score = 0;
-        level=id;
-        $('#level').show();
+        foundAnswers = [] // array for caching the correctly guessed answers from the player
+        gameBoard.clear(); //clears any UI from a previous level
+        score = 0; // resets the players score 
+        $('#level').show(); // present the Parent UI for the level 
         $('#levelSelect').hide();	
-        $('#userInputBox').focus();
-        userInputBox.autofocus = true;
-        document.getElementById("levelHead").innerHTML = "Level 5";
+        $('#userInputBox').focus(); // focus the input box so the user can enter answers quickly without having to re-click the input box
+        //userInputBox.autofocus = true;
+        document.getElementById("levelHead").innerHTML = `Level {id}`; //formatted string to display which level the user is currently on 
         //change the letters on the buttons
-
-        document.getElementById("userInputBox").value = "";
+        //document.getElementById("userInputBox").value = ""; // resets the 
+        $('userInputBox').val('');//clears the input box
+        //
+        //loop to assign an input button to a letter 
         for(var x = 0; x < 6; x++){
 
-                //iterate through spli list of level(n)Letters
-                //change the buttons text 
+                //changes the buttons text to match the corresponding letters for the level using a cached json file for the data 
                 const letters = level5Letters.split(" ");
                 try{
-
                         document.getElementById("letterButton" + x).innerHTML = letters[x];
                 }catch(error){
-                        continue;
+                        console.log(error);;
                 }
         }
 
